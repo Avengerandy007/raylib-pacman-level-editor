@@ -14,6 +14,7 @@ void PlaceEntity(){
 	int x = pos.x, y = pos.y;
 	x /= 50;
 	y /= 50;
+	if(Tile::tileSet.matrix[x][y].m_containedEntity != nullptr) return; 
 	Tile::tileSet.matrix[x][y].m_containedEntity = std::make_unique<Wall>();
 	Tile::tileSet.matrix[x][y].m_containedEntity->rect = std::make_shared<Rectangle>(Tile::tileSet.matrix[x][y].m_def);
 }
