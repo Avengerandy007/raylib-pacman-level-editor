@@ -1,5 +1,6 @@
 #include "../include/Update.hpp"
-#include "../include/Tile.hpp"
+#include "../libpacman/include/Tile.hpp"
+#include "../include/MouseLogic.hpp"
 #include <cstdint>
 #include <iostream>
 
@@ -28,5 +29,8 @@ void Update(){
 		if (WindowShouldClose()) running = false;
 		ResfreshWindow();
 		UpdateTiles();
+		if (Click()){
+			PlaceEntity();
+		}
 	}
 }
