@@ -1,6 +1,7 @@
 #include "../include/Update.hpp"
 #include "../libpacman/include/Tile.hpp"
 #include "../include/MouseLogic.hpp"
+#include "../include/FileIO.hpp"
 #include <cstdint>
 #include <iostream>
 
@@ -31,6 +32,8 @@ void Update(){
 		UpdateTiles();
 		if (Click()){
 			PlaceEntity();
+		}else if (SaveKeyPressed()){
+			Save();
 		}
 	}
 }
