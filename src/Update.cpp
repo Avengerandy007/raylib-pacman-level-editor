@@ -30,9 +30,8 @@ void Update(){
 		if (WindowShouldClose()) running = false;
 		ResfreshWindow();
 		UpdateTiles();
-		if (Click()){
-			PlaceEntity();
-		}else if (SaveKeyPressed()){
+		PollClicks();
+		if (SaveKeyPressed()){
 			Save();
 		}
 	}

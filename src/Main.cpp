@@ -1,5 +1,6 @@
 #include "../include/Update.hpp"
 #include "../libpacman/include/Tile.hpp"
+#include <Raylib/include/raylib.h>
 #include <iostream>
 #include <memory>
 #define println(x) std::cout << x << "\n"
@@ -7,6 +8,7 @@
 void InitRaylib(){
 	InitWindow(1000, 1000, "Pacman");
 	SetExitKey(KEY_NULL);
+	SetTargetFPS(60);
 }
 
 int main(){
