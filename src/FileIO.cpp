@@ -13,9 +13,8 @@ bool SaveKeyPressed(){
 
 void Save(){
 	std::string fileName = "";
-	std::cout << "Enter file name" << std::endl;
+	std::cout << "Enter file name\n";
 	std::cin >> fileName;
-	std::cout << "File name entered\n";
 	std::fstream file;
 	std::cout << "Created file stream\n";
 	file.open(fileName, std::ios::trunc | std::ios::out | std::ios::binary);
@@ -28,7 +27,6 @@ void Save(){
 			file << "DEF";
 			file.write(reinterpret_cast<char*>(&Tile::tileSet.matrix[i][k].m_def), sizeof(Tile::tileSet.matrix[i][k].m_def));
 			file << "\n";
-			std::cout << "Wrote another one, more specifically: " << &Tile::tileSet.matrix[i][k] << "\n";
 		}
 	}
 	file.close();
