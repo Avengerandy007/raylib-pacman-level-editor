@@ -1,9 +1,4 @@
-#include <fstream>
-#include <ios>
-#include <string>
-#include <iostream>
 #include "../include/FileIO.hpp"
-
 bool SaveKeyPressed(){
 	if (IsKeyPressed(KEY_S)){
 		return true;
