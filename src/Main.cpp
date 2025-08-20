@@ -21,9 +21,6 @@ int main(){
 	InitTextures();
 	Tile::InitTileSet();
 	println("Created tiles");
-	Tile::tileSet.matrix[0][0].m_containedEntity = std::make_unique<Wall>();
-	Tile::tileSet.matrix[1][1].m_containedEntity = std::make_unique<Wall>();
-	Tile::tileSet.matrix[1][1].m_containedEntity->rect = std::make_shared<Rectangle>(Tile::tileSet.matrix[1][1].m_def);
 	Update();
 	println("Update cycle finished");
 	CloseWindow();
