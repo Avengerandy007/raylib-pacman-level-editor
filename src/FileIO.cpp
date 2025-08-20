@@ -22,7 +22,7 @@ void Save(){
 	for (int i = 0; i < 20; i++){
 		for (int k = 0; k < 20; k++){
 			if (Tile::tileSet.matrix[i][k].m_containedEntity == nullptr){
-				file << 0;
+				file << EMPTY;
 			}else file << Tile::tileSet.matrix[i][k].m_containedEntity->typeId;
 			file << "DEF";
 			file.write(reinterpret_cast<char*>(&Tile::tileSet.matrix[i][k].m_def), sizeof(Tile::tileSet.matrix[i][k].m_def));

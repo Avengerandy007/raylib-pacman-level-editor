@@ -1,17 +1,18 @@
 #pragma once
-#include "../../Raylib/include/raylib.h"
+#include "../Raylib/include/raylib.h"
 #include "EntityModules.hpp"
 #include <memory>
 #include <string>
 
+enum TypeId{
+	EMPTY = 0,
+	WALL = 1,
+};
+
 class Entity{
 public:
 	std::shared_ptr<Rectangle> rect = std::make_shared<Rectangle>();
-	int typeId; 
-	/* Separate id for each subseqent inherited class
-	 * typeId = 0 -> null
-	 * typeId = 1 -> wall
-	 */
+	TypeId typeId; 
 	virtual void Update() = 0;
 };
 
