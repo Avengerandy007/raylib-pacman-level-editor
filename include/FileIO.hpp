@@ -5,4 +5,3 @@
 #include <iostream>
 extern bool SaveKeyPressed();
 extern void Save();
-extern void Load();
