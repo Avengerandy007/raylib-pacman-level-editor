@@ -12,15 +12,13 @@ void Save(){
 	std::cin >> fileName;
 	std::fstream file;
 	std::cout << "Created file stream\n";
-	file.open(fileName, std::ios::trunc | std::ios::out | std::ios::binary);
+	file.open(fileName, std::ios::trunc | std::ios::out);
 	std::cout << "Opened file stream\n";
 	for (int i = 0; i < 20; i++){
 		for (int k = 0; k < 20; k++){
 			if (Tile::tileSet.matrix[i][k].m_containedEntity == nullptr){
 				file << EMPTY;
 			}else file << Tile::tileSet.matrix[i][k].m_containedEntity->typeId;
-			file << "D";
-			file << "N";
 		}
 	}
 	file.close();
