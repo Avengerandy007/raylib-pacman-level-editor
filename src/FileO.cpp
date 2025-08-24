@@ -19,9 +19,8 @@ void Save(){
 			if (Tile::tileSet.matrix[i][k].m_containedEntity == nullptr){
 				file << EMPTY;
 			}else file << Tile::tileSet.matrix[i][k].m_containedEntity->typeId;
-			file << "DEF";
-			file.write(reinterpret_cast<char*>(&Tile::tileSet.matrix[i][k].m_def), sizeof(Tile::tileSet.matrix[i][k].m_def));
-			file << "\n";
+			file << "D";
+			file << "N";
 		}
 	}
 	file.close();
