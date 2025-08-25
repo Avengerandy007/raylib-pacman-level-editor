@@ -1,19 +1,10 @@
 # Compiler
 CXX = x86_64-w64-mingw32-g++
-#CXX = clang++
+RayLib = ./Raylib
 
-#Raylib lib path
-RayLib = ../PacmanEngine/Raylib
-
-ifeq ($(CXX),clang++)
-# Linux deployment
-CXXFLAGS = -std=c++20 -Wall -g $(RayLib --cflags)
-LDFLAGS  = $(RayLib --libs)
-else
 # Windows deployment
 CXXFLAGS = -std=c++20 -Wall -g -I$(RayLib)/include -I./libpacman/include -static-libstdc++ -static-libgcc -O2 -DNDEBUG
-LDFLAGS  = -L$(RayLib)/lib -L./libpacman -lraylib -lpacman -lopengl32 -lgdi32 -lwinmm -mconsole #-mwindows 
-endif
+LDFLAGS  = -L$(RayLib)/lib -L./libpacman -lraylib -lpacman -lopengl32 -lgdi32 -lwinmm -mconsole #-mwindows
 
 # Files & directories
 SRCS := $(wildcard src/*.cpp)   # Only the LevelEditor sources
