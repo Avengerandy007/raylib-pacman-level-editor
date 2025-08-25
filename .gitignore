@@ -40,4 +40,4 @@
 *.dwo
 
 # level files
-.l
+*.l
