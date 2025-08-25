@@ -28,8 +28,7 @@ $(TARGET): $(OBJS)
 	$(CXX) $(CXXFLAGS) -o $@ $(OBJS) $(LDFLAGS)
 
 # Compile .cpp to .o (in build dir)
-$(BUILD_DIR)/%.o: src/%.cpp
-	@mkdir -p $(BUILD_DIR)
+$(BUILD_DIR)/%.o: src/%.cpp | $(BUILD_DIR)
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 # Clean
