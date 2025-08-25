@@ -15,6 +15,14 @@ TARGET = LevelEditor
 # Default rule
 all: $(TARGET)
 
+# Ensure build directory exists
+$(BUILD_DIR):
+ifeq ($(IS_WINDOWS),1)
+	@if not exist $(BUILD_DIR) mkdir $(BUILD_DIR)
+else
+	@mkdir -p $(BUILD_DIR)
+endif
+
 # Build app, linking with libpacman.a
 $(TARGET): $(OBJS)
 	$(CXX) $(CXXFLAGS) -o $@ $(OBJS) $(LDFLAGS)
@@ -26,4 +34,9 @@ $(BUILD_DIR)/%.o: src/%.cpp
 
 # Clean
 clean:
+ifeq ($(OS),Windows_NT)
+	-rmdir /s /q $(BUILD_DIR)
+	-del $(TARGET)
+else
 	rm -rf $(BUILD_DIR) $(TARGET)
+endif
