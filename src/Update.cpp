@@ -2,6 +2,7 @@
 #include "../libpacman/include/Tile.hpp"
 #include "../include/MouseLogic.hpp"
 #include "../include/FileO.hpp"
+#include "../libpacman/include/FileI.hpp"
 #include <cstdint>
 #include <iostream>
 
@@ -33,6 +34,11 @@ void Update(){
 		PollClicks();
 		if (SaveKeyPressed()){
 			Save();
+		}else if(IsKeyPressed(KEY_L)){
+			Tile::tileSet = FileI::MakeMatrix(FileI::FindFile());
+			Tile::InitTileSet();
+			std::cout << "Moved matrix into ram\n";
+			Tile::SetEntityRectangles();
 		}
 	}
 }

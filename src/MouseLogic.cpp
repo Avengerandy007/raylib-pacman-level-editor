@@ -39,7 +39,7 @@ void PlaceEntity(){
 	Tile::tileSet.matrix[std::get<0>(tile)][std::get<1>(tile)].m_containedEntity = std::make_unique<Wall>();
 
 	//Set the rect of said entity to this tile
-	Tile::tileSet.matrix[std::get<0>(tile)][std::get<1>(tile)].m_containedEntity->rect = std::make_shared<Rectangle>(Tile::tileSet.matrix[std::get<0>(tile)][std::get<1>(tile)].m_def);
+	Tile::tileSet.matrix[std::get<0>(tile)][std::get<1>(tile)].m_containedEntity->rect = Tile::tileSet.matrix[std::get<0>(tile)][std::get<1>(tile)].m_def;
 }
 
 void RemoveEntity(){
