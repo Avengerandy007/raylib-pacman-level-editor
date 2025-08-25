@@ -17,7 +17,7 @@ all: $(TARGET)
 
 # Ensure build directory exists
 $(BUILD_DIR):
-ifeq ($(IS_WINDOWS),1)
+ifeq ($(OS),Windows_NT)
 	@if not exist $(BUILD_DIR) mkdir $(BUILD_DIR)
 else
 	@mkdir -p $(BUILD_DIR)
