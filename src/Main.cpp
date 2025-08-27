@@ -6,7 +6,7 @@
 #define println(x) std::cout << x << "\n"
 
 void InitRaylib(){
-	SetTargetFPS(60);
+	SetTargetFPS(165);
 	InitWindow(1000, 1000, "Pacman");
 	SetExitKey(KEY_NULL);
 }
