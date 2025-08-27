@@ -15,17 +15,11 @@ void ResfreshWindow(){
 }
 
 void UpdateTiles(){
-	bool playerInputProcessed = false;
 	for (uint8_t i = 0; i < 20; i++){
 		for (uint8_t k = 0; k < 20; k++){
 			if (!Tile::tileSet.matrix[i][k].m_containedEntity) continue;
 			else{
-				if (Tile::tileSet.matrix[i][k].m_containedEntity->typeId == PLAYER  && !playerInputProcessed){
-					playerInputProcessed = true;
-					Tile::tileSet.matrix[i][k].m_containedEntity->Update();
-				}else if (Tile::tileSet.matrix[i][k].m_containedEntity->typeId != PLAYER){
-					Tile::tileSet.matrix[i][k].m_containedEntity->Update();
-				}
+				Tile::tileSet.matrix[i][k].m_containedEntity->Update();
 			}
 		}
 	}
