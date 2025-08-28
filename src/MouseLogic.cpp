@@ -10,6 +10,14 @@ void PollClicks(){
 	else if (RightClick()) RemoveEntity();
 }
 
+void PollKeys(){
+	if (IsKeyPressed(KEY_P)){
+		entityToBePlaced = TypesOfEntities::Player;
+	}else if (IsKeyPressed(KEY_W)){
+		entityToBePlaced = TypesOfEntities::Wall;
+	}
+}
+
 bool LeftClick(){
 	if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) return true;
 	else return false;
@@ -28,6 +36,17 @@ std::tuple<uint8_t, uint8_t> GetTileUnderMouse(){
 	return std::make_tuple(x, y);
 }
 
+void CreateEntity(std::tuple<uint8_t, uint8_t>& tile){
+	switch (entityToBePlaced) {
+		case TypesOfEntities::Wall:
+			Tile::tileSet.matrix[std::get<0>(tile)][std::get<1>(tile)].m_containedEntity = std::make_unique<Wall>();
+			break;
+		case TypesOfEntities::Player:
+			Tile::tileSet.matrix[std::get<0>(tile)][std::get<1>(tile)].m_containedEntity = std::make_unique<Player>();
+			break;
+	}
+}
+
 void PlaceEntity(){
 	//Get tile to apply changes
 	std::tuple<uint8_t, uint8_t> tile = GetTileUnderMouse();
@@ -36,7 +55,7 @@ void PlaceEntity(){
 	if(Tile::tileSet.matrix[std::get<0>(tile)][std::get<1>(tile)].m_containedEntity != nullptr) Tile::tileSet.matrix[std::get<0>(tile)][std::get<1>(tile)].m_containedEntity = nullptr; 
 
 	//Fill the tile with selected entity type
-	Tile::tileSet.matrix[std::get<0>(tile)][std::get<1>(tile)].m_containedEntity = std::make_unique<Wall>();
+	CreateEntity(tile);
 
 	//Set the rect of said entity to this tile
 	Tile::tileSet.matrix[std::get<0>(tile)][std::get<1>(tile)].m_containedEntity->rect = Tile::tileSet.matrix[std::get<0>(tile)][std::get<1>(tile)].m_def;

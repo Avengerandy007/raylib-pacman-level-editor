@@ -1,9 +1,12 @@
 #include "../include/Update.hpp"
 #include "../libpacman/include/Tile.hpp"
+#include "../include/MouseLogic.hpp"
 #include <iostream>
 #include <memory>
 #include "../libpacman/include/FileI.hpp"
 #define println(x) std::cout << x << "\n"
+
+TypesOfEntities entityToBePlaced = TypesOfEntities::Wall;
 
 void InitRaylib(){
 	SetTargetFPS(165);
@@ -23,12 +26,14 @@ int main(){
 
 	InitRaylib();
 	println("Started raylib");
+
 	InitTextures();
+
 	Tile::InitTileSet();
-	Tile::tileSet.matrix[0][0].m_containedEntity = std::make_unique<Player>();
-	Tile::tileSet.matrix[0][0].m_containedEntity->rect = Tile::tileSet.matrix[0][0].m_def;
 	println("Created tiles");
 	Update();
+
 	println("Update cycle finished");
+
 	CloseWindow();
 }

@@ -31,7 +31,10 @@ void Update(){
 		if (WindowShouldClose()) running = false;
 		ResfreshWindow();
 		UpdateTiles();
+
 		PollClicks();
+		PollKeys();
+
 		if (SaveKeyPressed()){
 			Save();
 		}else if(IsKeyPressed(KEY_L)){
