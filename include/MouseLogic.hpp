@@ -6,6 +6,7 @@
 enum class TypesOfEntities{
 	Wall,
 	Player,
+	Coin,
 };
 
 extern TypesOfEntities entityToBePlaced;

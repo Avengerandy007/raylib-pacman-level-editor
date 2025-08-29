@@ -15,6 +15,8 @@ void PollKeys(){
 		entityToBePlaced = TypesOfEntities::Player;
 	}else if (IsKeyPressed(KEY_W)){
 		entityToBePlaced = TypesOfEntities::Wall;
+	}else if (IsKeyPressed(KEY_C)){
+		entityToBePlaced = TypesOfEntities::Coin;
 	}
 }
 
@@ -44,6 +46,11 @@ void CreateEntity(std::tuple<uint8_t, uint8_t>& tile){
 		case TypesOfEntities::Player:
 			Tile::tileSet.matrix[std::get<0>(tile)][std::get<1>(tile)].m_containedEntity = std::make_unique<Player>();
 			break;
+
+		case TypesOfEntities::Coin:
+			Tile::tileSet.matrix[std::get<0>(tile)][std::get<1>(tile)].m_containedEntity = std::make_unique<Coin>();
+			break;
+
 	}
 }
 
