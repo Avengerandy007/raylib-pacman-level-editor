@@ -1,6 +1,7 @@
 #include "../Raylib/include/raylib.h"
 #include "../libpacman/include/Tile.hpp"
 #include "../include/MouseLogic.hpp"
+#include <iostream>
 #include <memory>
 #include <cstdint>
 #include <tuple>
@@ -44,7 +45,7 @@ void CreateEntity(std::tuple<uint8_t, uint8_t>& tile){
 			Tile::tileSet.matrix[std::get<0>(tile)][std::get<1>(tile)].m_containedEntity = std::make_unique<Wall>();
 			break;
 		case TypesOfEntities::Player:
-			Tile::tileSet.matrix[std::get<0>(tile)][std::get<1>(tile)].m_containedEntity = std::make_unique<Player>();
+			Tile::tileSet.matrix[std::get<0>(tile)][std::get<1>(tile)].m_containedEntity = std::make_unique<Player>(std::get<0>(tile), std::get<1>(tile));
 			break;
 
 		case TypesOfEntities::Coin:
@@ -63,6 +64,7 @@ void PlaceEntity(){
 
 	//Fill the tile with selected entity type
 	CreateEntity(tile);
+	if (!Tile::tileSet.matrix[std::get<0>(tile)][std::get<1>(tile)].m_containedEntity) std::cerr << "Did not correctly place entity\n";
 
 	//Set the rect of said entity to this tile
 	Tile::tileSet.matrix[std::get<0>(tile)][std::get<1>(tile)].m_containedEntity->rect = Tile::tileSet.matrix[std::get<0>(tile)][std::get<1>(tile)].m_def;
