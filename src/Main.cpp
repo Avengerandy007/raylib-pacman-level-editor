@@ -18,12 +18,13 @@ void InitTextures(){
 	Wall::Texture();
 	Player::Texture();
 	Coin::Texture();
+	Ghost::Texture();
 }
 
 int main(){
 	std::cout << "Hello World!" << std::endl;
 	
-	instance = LEVEL_EDITOR;
+	instance = GAME;
 
 	InitRaylib();
 	println("Started raylib");

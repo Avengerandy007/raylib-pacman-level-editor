@@ -18,6 +18,8 @@ void PollKeys(){
 		entityToBePlaced = TypesOfEntities::Wall;
 	}else if (IsKeyPressed(KEY_C)){
 		entityToBePlaced = TypesOfEntities::Coin;
+	}else if (IsKeyPressed(KEY_G)){
+		entityToBePlaced = TypesOfEntities::Ghost;
 	}else if (IsKeyPressed(KEY_F)){
 		FillWithCoins();
 	}
@@ -35,7 +37,7 @@ void FillWithCoins(){
 }
 
 bool LeftClick(){
-	if (IsMouseButtonDown(MOUSE_LEFT_BUTTON)) return true;
+	if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) return true;
 	else return false;
 }
 
@@ -63,6 +65,9 @@ void CreateEntity(std::tuple<uint8_t, uint8_t>& tile){
 
 		case TypesOfEntities::Coin:
 			Tile::tileSet.matrix[std::get<0>(tile)][std::get<1>(tile)].m_containedEntity = std::make_unique<Coin>();
+			break;
+		case TypesOfEntities::Ghost:
+			Tile::tileSet.matrix[std::get<0>(tile)][std::get<1>(tile)].m_containedEntity = std::make_unique<Ghost>(std::get<0>(tile), std::get<1>(tile));
 			break;
 
 	}
