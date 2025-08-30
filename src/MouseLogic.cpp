@@ -37,7 +37,7 @@ void FillWithCoins(){
 }
 
 bool LeftClick(){
-	if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) return true;
+	if (IsMouseButtonDown(MOUSE_LEFT_BUTTON)) return true;
 	else return false;
 }
 
@@ -78,7 +78,7 @@ void PlaceEntity(){
 	std::tuple<uint8_t, uint8_t> tile = GetTileUnderMouse();
 
 	//If tile is already ocupied, remove what is inside
-	if(Tile::tileSet.matrix[std::get<0>(tile)][std::get<1>(tile)].m_containedEntity != nullptr) Tile::tileSet.matrix[std::get<0>(tile)][std::get<1>(tile)].m_containedEntity = nullptr; 
+	Tile::tileSet.matrix[std::get<0>(tile)][std::get<1>(tile)].m_containedEntity = nullptr; 
 
 	//Fill the tile with selected entity type
 	CreateEntity(tile);
