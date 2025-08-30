@@ -24,7 +24,7 @@ void InitTextures(){
 int main(){
 	std::cout << "Hello World!" << std::endl;
 	
-	instance = GAME;
+	instance = LEVEL_EDITOR;
 
 	InitRaylib();
 	println("Started raylib");
