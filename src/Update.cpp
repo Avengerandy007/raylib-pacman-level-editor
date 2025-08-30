@@ -37,7 +37,7 @@ void Update(){
 
 		if (SaveKeyPressed()){
 			Save();
-		}else if(IsKeyPressed(KEY_L)){
+		}else if(IsKeyDown(KEY_LEFT_CONTROL) && IsKeyPressed(KEY_L)){
 			Tile::tileSet = FileI::MakeMatrix(FileI::FindFile());
 			Tile::InitTileSet();
 			std::cout << "Moved matrix into ram\n";

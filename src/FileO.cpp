@@ -1,6 +1,6 @@
 #include "../include/FileO.hpp"
 bool SaveKeyPressed(){
-	if (IsKeyPressed(KEY_S)){
+	if (IsKeyDown(KEY_LEFT_CONTROL) && IsKeyPressed(KEY_S)){
 		return true;
 	}
 	else return false;
