@@ -22,12 +22,12 @@ void PollKeys(){
 }
 
 bool LeftClick(){
-	if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) return true;
+	if (IsMouseButtonDown(MOUSE_LEFT_BUTTON)) return true;
 	else return false;
 }
 
 bool RightClick(){
-	if (IsMouseButtonPressed(MOUSE_RIGHT_BUTTON)) return true;
+	if (IsMouseButtonDown(MOUSE_RIGHT_BUTTON)) return true;
 	else return false;
 }
 
