@@ -17,6 +17,7 @@ void InitRaylib(){
 void InitTextures(){
 	Wall::Texture();
 	Player::Texture();
+	Coin::Texture();
 }
 
 int main(){
