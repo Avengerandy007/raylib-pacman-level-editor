@@ -29,8 +29,8 @@ void FillWithCoins(){
 	for(uint8_t i = 0; i < 20; i++){
 		for (uint8_t k = 0; k < 20; k++){
 			if (Tile::tileSet.matrix[i][k].m_containedEntity == nullptr){
-				Tile::tileSet.matrix[i][k].m_containedEntity = std::make_unique<Coin>();
-				Tile::tileSet.matrix[i][k].m_containedEntity->rect = Tile::tileSet.matrix[i][k].m_def;
+				Tile::tileSet.matrix[i][k].m_coinContainer = std::make_unique<Coin>();
+				Tile::tileSet.matrix[i][k].m_coinContainer->rect = Tile::tileSet.matrix[i][k].m_def;
 			}
 		}
 	}
@@ -64,7 +64,7 @@ void CreateEntity(std::tuple<uint8_t, uint8_t>& tile){
 			break;
 
 		case TypesOfEntities::Coin:
-			Tile::tileSet.matrix[std::get<0>(tile)][std::get<1>(tile)].m_containedEntity = std::make_unique<Coin>();
+			Tile::tileSet.matrix[std::get<0>(tile)][std::get<1>(tile)].m_coinContainer = std::make_unique<Coin>();
 			break;
 		case TypesOfEntities::Ghost:
 			Tile::tileSet.matrix[std::get<0>(tile)][std::get<1>(tile)].m_containedEntity = std::make_unique<Ghost>(std::get<0>(tile), std::get<1>(tile));
@@ -79,13 +79,18 @@ void PlaceEntity(){
 
 	//If tile is already ocupied, remove what is inside
 	Tile::tileSet.matrix[std::get<0>(tile)][std::get<1>(tile)].m_containedEntity = nullptr; 
+	Tile::tileSet.matrix[std::get<0>(tile)][std::get<1>(tile)].m_coinContainer = nullptr;
 
 	//Fill the tile with selected entity type
 	CreateEntity(tile);
-	if (!Tile::tileSet.matrix[std::get<0>(tile)][std::get<1>(tile)].m_containedEntity) std::cerr << "Did not correctly place entity\n";
 
 	//Set the rect of said entity to this tile
-	Tile::tileSet.matrix[std::get<0>(tile)][std::get<1>(tile)].m_containedEntity->rect = Tile::tileSet.matrix[std::get<0>(tile)][std::get<1>(tile)].m_def;
+	if (Tile::tileSet.matrix[std::get<0>(tile)][std::get<1>(tile)].m_containedEntity) Tile::tileSet.matrix[std::get<0>(tile)][std::get<1>(tile)].m_containedEntity->rect = Tile::tileSet.matrix[std::get<0>(tile)][std::get<1>(tile)].m_def;
+
+	if (Tile::tileSet.matrix[std::get<0>(tile)][std::get<1>(tile)].m_coinContainer) {
+		Tile::tileSet.matrix[std::get<0>(tile)][std::get<1>(tile)].m_coinContainer->rect = Tile::tileSet.matrix[std::get<0>(tile)][std::get<1>(tile)].m_def;
+		std::cout << "Placed coin at: " << Tile::tileSet.matrix[std::get<0>(tile)][std::get<1>(tile)].m_coinContainer->rect->x << ", " << Tile::tileSet.matrix[std::get<0>(tile)][std::get<1>(tile)].m_coinContainer->rect->y << "\n";
+	}
 }
 
 void RemoveEntity(){
