@@ -89,11 +89,11 @@ void PlaceEntity(){
 
 	if (Tile::tileSet.matrix[std::get<0>(tile)][std::get<1>(tile)].m_coinContainer) {
 		Tile::tileSet.matrix[std::get<0>(tile)][std::get<1>(tile)].m_coinContainer->rect = Tile::tileSet.matrix[std::get<0>(tile)][std::get<1>(tile)].m_def;
-		std::cout << "Placed coin at: " << Tile::tileSet.matrix[std::get<0>(tile)][std::get<1>(tile)].m_coinContainer->rect->x << ", " << Tile::tileSet.matrix[std::get<0>(tile)][std::get<1>(tile)].m_coinContainer->rect->y << "\n";
 	}
 }
 
 void RemoveEntity(){
 	std::tuple<uint8_t, uint8_t> tile = GetTileUnderMouse();
 	Tile::tileSet.matrix[std::get<0>(tile)][std::get<1>(tile)].m_containedEntity = nullptr;
+	Tile::tileSet.matrix[std::get<0>(tile)][std::get<1>(tile)].m_coinContainer = nullptr;
 }
