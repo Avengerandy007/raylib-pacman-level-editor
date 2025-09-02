@@ -19,10 +19,15 @@ void Save(){
 	for (int i = 0; i < 20; i++){
 		for (int k = 0; k < 20; k++){
 			if (Tile::tileSet.matrix[i][k].m_containedEntity == nullptr){
-				fileContent += std::to_string(EMPTY);
-			}else {
+				if (Tile::tileSet.matrix[i][k].m_coinContainer){
+					Coin::coinCount++;
+					fileContent += std::to_string(COIN);
+				}else{
+					fileContent += std::to_string(EMPTY);
+				}
+				
+			}else{
 				fileContent += std::to_string(Tile::tileSet.matrix[i][k].m_containedEntity->typeId);
-				if (Tile::tileSet.matrix[i][k].m_containedEntity->typeId == COIN) Coin::coinCount++;
 			}
 		}
 	}
