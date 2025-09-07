@@ -11,7 +11,7 @@ void Save(){
 	std::string fileName = "";
 	std::cout << "Enter file name\n";
 	std::cin >> fileName;
-	std::fstream file(fileName, std::ios::trunc | std::ios::out);
+	std::fstream file("./levels/" + fileName, std::ios::trunc | std::ios::out);
 	std::cout << "Created file stream\n";
 	std::string fileContent = "";
 	std::cout << "Opened file stream\n";
