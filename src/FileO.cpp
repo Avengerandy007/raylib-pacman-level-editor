@@ -1,4 +1,5 @@
 #include "../include/FileO.hpp"
+#include <filesystem>
 #include <string>
 bool SaveKeyPressed(){
 	if (IsKeyDown(KEY_LEFT_CONTROL) && IsKeyPressed(KEY_S)){
@@ -11,6 +12,9 @@ void Save(){
 	std::string fileName = "";
 	std::cout << "Enter file name\n";
 	std::cin >> fileName;
+	if (!DirectoryExists("./levels")){
+		std::filesystem::create_directories("./levels");
+	}
 	std::fstream file("./levels/" + fileName, std::ios::trunc | std::ios::out);
 	std::cout << "Created file stream\n";
 	std::string fileContent = "";
