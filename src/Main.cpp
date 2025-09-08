@@ -31,7 +31,6 @@ int main(){
 
 	InitTextures();
 
-	Tile::InitTileSet();
 	println("Created tiles");
 	Update();
 
