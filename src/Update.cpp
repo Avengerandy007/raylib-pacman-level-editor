@@ -40,7 +40,8 @@ void Update(){
 		if (SaveKeyPressed()){
 			Save();
 		}else if(IsKeyDown(KEY_LEFT_CONTROL) && IsKeyPressed(KEY_L)){
-			Tile::tileSet = FileI::MakeMatrix(FileI::FindFile());
+			std::ifstream file = FileI::FindFile();
+			Tile::tileSet = FileI::MakeMatrix(file);
 			Tile::InitTileSet();
 			std::cout << "Moved matrix into ram\n";
 			Tile::SetEntityRectangles();

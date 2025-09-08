@@ -41,3 +41,6 @@
 
 # level files
 *.l
+
+# clangd config file
+*.clangd
