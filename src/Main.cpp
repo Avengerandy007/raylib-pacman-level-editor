@@ -30,7 +30,7 @@ int main(){
 	println("Started raylib");
 
 	InitTextures();
-	Tile::InitTileSet(50, 20);
+	Tile::InitTileSet<20>(50, Tile::tileSet);
 
 	println("Created tiles");
 	Update();
