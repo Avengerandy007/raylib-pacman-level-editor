@@ -1,5 +1,8 @@
 #pragma once
 #include "EntityModules.hpp"
+#include <memory>
+#include <vector>
+#include <string>
 
 enum TypeId{
 	EMPTY = 0,

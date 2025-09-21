@@ -11,6 +11,7 @@ public:
 	std::shared_ptr<Rectangle> m_def; //Definition of tile
 	std::unique_ptr<Entity>	m_containedEntity;
 	std::unique_ptr<Coin> m_coinContainer;
+
 	template<uint16_t matrixSize>
 	static void InitTileSet(const uint8_t tileSize, Matrix2<Tile, matrixSize>& set){
 		uint8_t x = 0, y = 0;
