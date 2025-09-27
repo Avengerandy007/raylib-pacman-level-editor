@@ -20,7 +20,7 @@
   
 ---
 ### To select what type of entity you want to place:
-  Press the key corresponing to the disired type:
+  Press the key corresponing to the desired type:
   - "P" - player object
   - "W" - wall
   - "C" - coin
