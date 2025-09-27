@@ -1,21 +1,30 @@
 # Build instructions
 
-## Prerequisites
-- MinGW g++ (make sure to add this to your systems PATH if you don't want to change the makefile)
-- make
+## Requirements
+  - make
+  - g++/mingw-g++
 
-## Instructions
-1. Cd into cloned repo dir.
+---
+1. Clone repo
+2. Switch to linux branch if needed
+3. Run ```make```
 
-### If you don't have G++ in your sys PATH
-  1. Open the makefile
-    
-  2. Change the following line
-``` Make
-CXX = x86_64-w64-mingw32-g++
-``` 
-  to point to your G++ path
+# Instructions
+
+### To load a file:
+  Press "Ctrl-l" and type the name of the file from the levels/ directory in the console prompt.
   
-___
+---
+### To save a file:
+  Press "Ctrl-s" and type the name of it in the console, it will be saved in the levels/ directory.
   
-2. Run make
+---
+### To select what type of entity you want to place:
+  Press the key corresponing to the disired type:
+  - "P" - player object
+  - "W" - wall
+  - "C" - coin
+  - "G" - ghost
+
+### Place/remove entity:
+Left/right click
